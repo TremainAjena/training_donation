@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS categories (
+    id SERIAL PRIMARY KEY NOT NULL,
+    name VARCHAR NOT NULL,
+    created_at TIMESTAMP NOT NULL
+);

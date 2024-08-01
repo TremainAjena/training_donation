@@ -1,0 +1,1 @@
+ALTER table events add FOREIGN KEY (organization_id) REFERENCES organizations(id) ON DELETE CASCADE;
