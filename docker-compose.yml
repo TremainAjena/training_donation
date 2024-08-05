@@ -25,5 +25,18 @@ services:
     depends_on:
       - db
 
+  # Express API container
+  api:
+    image: express-api
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./server:/app
+    # environment:
+    #   DATABASE_URL: "postgres://username:password@db:5432/database_name?schema=public"
+
 volumes:
   db:
