@@ -1,0 +1,1 @@
+insert into users (name, email, encrypted_password, zip_code) values ('Hector Fieldman', 'hectorf@aol.com', '2donate', '31250'), ('Eddie Kaspbrak', 'spaghettiman@gmail.com', 'wheezy1', '53023'), ('Richard Tozier', 'richiet@aol.com', 'beep2x', '53124');
