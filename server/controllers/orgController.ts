@@ -1,3 +1,5 @@
+import { Request, Response, NextFunction } from 'express';
+
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
@@ -13,7 +15,7 @@ const prisma = new PrismaClient()
  *       200:
  *         description: Returns an array of organizations.
  */
-  async function getOrganizations(req, res) {
+  async function getOrganizations(req: Request, res: Response) {
     const organizations = await prisma.organizations.findMany()
     res.json(organizations)
   }
@@ -51,7 +53,7 @@ const prisma = new PrismaClient()
  *       404:
  *         description: The organization was not found
  */
-  async function getOrganization(req, res) {
+  async function getOrganization(req: Request, res: Response) {
       const { id } = req.params
       const organization = await prisma.organizations.findUnique({ where: { id: Number(id) } })
       res.json(organization)
@@ -87,7 +89,7 @@ const prisma = new PrismaClient()
  *       500:
  *         description: Some server error
 */
-  async function createorganization(req, res) {
+  async function createOrganization(req: Request, res: Response) {
       const { name, region, roast } = req.body
       console.log(name, region)
      const result = await prisma.organizations.create({
@@ -132,7 +134,7 @@ const prisma = new PrismaClient()
  *       200:
  *         description: returns the user object.
  */
-  async function updateorganization(req, res) {
+  async function updateOrganization(req: Request, res: Response) {
       const { id } = req.params
       const { name, region, roast } = req.body
       const result = await prisma.organizations.update({
@@ -168,7 +170,7 @@ const prisma = new PrismaClient()
  *       404:
  *         description: The organization was not found
  */
-  async function deleteorganization(req, res) {
+  async function deleteOrganization(req: Request, res: Response) {
       const { id } = req.params
       const result = await prisma.organizations.delete({ where: { id: Number(id) } })
       res.json(result)
@@ -176,11 +178,11 @@ const prisma = new PrismaClient()
 
 // this is where you export your functions. You must list each function (created above) that you want to 'expose' when this module is required:
 module.exports = {
-  getorganizations,
-  getorganization,
-  updateorganization,
-  createorganization,
-  deleteorganization
+  getOrganizations,
+  getOrganization,
+  updateOrganization,
+  createOrganization,
+  deleteOrganization
   // add any additional functions that you want to export here... separated by commas,
 };
   

@@ -35,8 +35,8 @@ services:
       - "5001:5000"
     volumes:
       - ./server:/app
-    # environment:
-    #   DATABASE_URL: "postgres://username:password@db:5432/database_name?schema=public"
+    environment:
+      DATABASE_URL: "postgres://postgres:password@db:5432/donations?schema=public"
 
 volumes:
   db:
