@@ -27,6 +27,7 @@ services:
 
   # Express API container
   api:
+    profiles: ['api']
     image: express-api
     build:
       context: ./server
