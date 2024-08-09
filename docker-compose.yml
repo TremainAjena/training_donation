@@ -4,6 +4,7 @@ services:
 
   # create and setup postgresql database
   db:
+    profiles: ['db','all']
     image: postgres:latest
     restart: always
     ports:
@@ -17,6 +18,7 @@ services:
 
   # create and setup Flyway for managing migrations/seed-data
   flyway:
+    profiles: ['db','all']
     image: flyway/flyway
     command: -url=jdbc:postgresql://db/donations -schemas=public -user=postgres
       -password=password -connectRetries=5 migrate
@@ -27,7 +29,7 @@ services:
 
   # Express API container
   api:
-    profiles: ['api']
+    profiles: ['api','all']
     image: express-api
     build:
       context: ./server

@@ -1,18 +1,20 @@
-const express = require('express')
-const { query, validationResult, body } = require('express-validator');
-const validationUtils = require('../utils/validator');
-const router = express.Router()
-const orgController = require("../controllers/orgController.ts");
+import { Router, Request, Response } from 'express';
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
+export const orgRoutes = Router()
+
+import * as orgController from '../controllers/orgController';
 
 // GET "/organizations" route:
 // Add Swagger documentation here:
 
-router.route("/").get(orgController.getOrganizations);
+orgRoutes.route("/").get(orgController.getOrganizations);
 
 // GET "organizations/:id" route:
 // TODO: fill in Swagger documentation for this route :) 
-router.route("/:id").get(orgController.getOrganization);
-router.route("/").post(orgController.createOrganization);
+orgRoutes.route("/:id").get(orgController.getOrganization);
+// orgRoutes.route("/").post(orgController.createOrganization);
 
 // router.route("/").post([
 //     // body('name')
@@ -30,11 +32,5 @@ router.route("/").post(orgController.createOrganization);
 // orgController.createOrganization
 // );
 
-router.route("/:id").put(orgController.updateOrganization);
-router.route("/:id").delete(orgController.deleteOrganization);
-
-
-
-
-
-module.exports = router;
+// router.route("/:id").put(orgController.updateOrganization);
+// router.route("/:id").delete(orgController.deleteOrganization);
