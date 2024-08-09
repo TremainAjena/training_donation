@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import * as organizationsService from "../services/organizationsService"
 
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
@@ -15,9 +16,10 @@ const prisma = new PrismaClient()
  *       200:
  *         description: Returns an array of organizations.
  */
-  async function getOrganizations(req: Request, res: Response) {
-    const organizations = await prisma.organizations.findMany()
-    res.json(organizations)
+  export async function getOrganizations(req: Request, res: Response) {
+    const organizations = await organizationsService.getOrganizations()
+    // const organizations = await prisma.organizations.findMany()
+    return res.json(organizations)
   }
 
   // app.get('/hello', query('customer').notEmpty(), (req, res) => {
@@ -53,9 +55,9 @@ const prisma = new PrismaClient()
  *       404:
  *         description: The organization was not found
  */
-  async function getOrganization(req: Request, res: Response) {
+  export async function getOrganization(req: Request, res: Response) {
       const { id } = req.params
-      const organization = await prisma.organizations.findUnique({ where: { id: Number(id) } })
+      const organization = await organizationsService.getOrganization(Number(id))
       res.json(organization)
     }
   
@@ -89,18 +91,20 @@ const prisma = new PrismaClient()
  *       500:
  *         description: Some server error
 */
-  async function createOrganization(req: Request, res: Response) {
-      const { name, region, roast } = req.body
-      console.log(name, region)
-     const result = await prisma.organizations.create({
-       data: {
-         region: region,
-         roast: roast,
-         name: name,
-       },
-     })
-     res.json(result)
-   }
+  // export async function createOrganization(req: Request, res: Response) {
+  //     const { name, email, phone, city, state } = req.body
+  //     console.log(name, email, phone, city, state)
+  //    const result = await prisma.organizations.create({
+  //      data: {
+  //        name: name,
+  //        email: email,
+  //        phone: phone,
+  //        city: city,
+  //        state: state,
+  //      },
+  //    })
+  //    res.json(result)
+  //  }
   
 
 // PUT /organizations/:id - Update organization entry
@@ -134,19 +138,19 @@ const prisma = new PrismaClient()
  *       200:
  *         description: returns the user object.
  */
-  async function updateOrganization(req: Request, res: Response) {
-      const { id } = req.params
-      const { name, region, roast } = req.body
-      const result = await prisma.organizations.update({
-          where: { id: Number(id) },
-          data: {
-              region: region,
-              roast: roast,
-              name: name,
-          },
-        })
-      res.json(result)
-    }
+  // async function updateOrganization(req: Request, res: Response) {
+  //     const { id } = req.params
+  //     const { name, region, roast } = req.body
+  //     const result = await prisma.organizations.update({
+  //         where: { id: Number(id) },
+  //         data: {
+  //             region: region,
+  //             roast: roast,
+  //             name: name,
+  //         },
+  //       })
+  //     res.json(result)
+  //   }
     
 
 // DELETE /organizations/:id - deleting specific organization entries
@@ -170,19 +174,10 @@ const prisma = new PrismaClient()
  *       404:
  *         description: The organization was not found
  */
-  async function deleteOrganization(req: Request, res: Response) {
-      const { id } = req.params
-      const result = await prisma.organizations.delete({ where: { id: Number(id) } })
-      res.json(result)
-    }
+  // async function deleteOrganization(req: Request, res: Response) {
+  //     const { id } = req.params
+  //     const result = await prisma.organizations.delete({ where: { id: Number(id) } })
+  //     res.json(result)
+  //   }
 
-// this is where you export your functions. You must list each function (created above) that you want to 'expose' when this module is required:
-module.exports = {
-  getOrganizations,
-  getOrganization,
-  updateOrganization,
-  createOrganization,
-  deleteOrganization
-  // add any additional functions that you want to export here... separated by commas,
-};
   
