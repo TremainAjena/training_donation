@@ -1,3 +1,5 @@
+import { Result } from "@prisma/client/runtime/library"
+
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
@@ -14,3 +16,16 @@ export async function getOrganization(organizationId: number) {
         }
     })
 }
+
+export async function createOrganization(name: string, email: string, phone: string, city: string, state: string) {
+   return await prisma.organizations.create({
+     data: {
+       name: name,
+       email: email,
+       phone: phone,
+       city: city,
+       state: state,
+     },
+   })
+//    res.json(result)
+ }

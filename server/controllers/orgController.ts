@@ -91,20 +91,24 @@ const prisma = new PrismaClient()
  *       500:
  *         description: Some server error
 */
-  // export async function createOrganization(req: Request, res: Response) {
-  //     const { name, email, phone, city, state } = req.body
-  //     console.log(name, email, phone, city, state)
-  //    const result = await prisma.organizations.create({
-  //      data: {
-  //        name: name,
-  //        email: email,
-  //        phone: phone,
-  //        city: city,
-  //        state: state,
-  //      },
-  //    })
-  //    res.json(result)
-  //  }
+  export async function createOrganization(req: Request, res: Response) {
+      console.log("hello")
+      const { name, email, phone, city, state } = req.body
+      const organization = await organizationsService.createOrganization(name, email, phone, city, state)
+      return res.json(organization)
+
+    //   console.log(name, email, phone, city, state)
+    //  const result = await prisma.organizations.create({
+    //    data: {
+    //      name: name,
+    //      email: email,
+    //      phone: phone,
+    //      city: city,
+    //      state: state,
+    //    },
+    //  })
+    //  res.json(result)
+   }
   
 
 // PUT /organizations/:id - Update organization entry
