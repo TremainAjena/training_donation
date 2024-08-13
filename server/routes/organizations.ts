@@ -14,7 +14,7 @@ orgRoutes.route("/").get(orgController.getOrganizations);
 // GET "organizations/:id" route:
 // TODO: fill in Swagger documentation for this route :) 
 orgRoutes.route("/:id").get(orgController.getOrganization);
-// orgRoutes.route("/").post(orgController.createOrganization);
+orgRoutes.route("/").post(orgController.createOrganization);
 
 // router.route("/").post([
 //     // body('name')
@@ -33,4 +33,4 @@ orgRoutes.route("/:id").get(orgController.getOrganization);
 // );
 
 // router.route("/:id").put(orgController.updateOrganization);
-// router.route("/:id").delete(orgController.deleteOrganization);
+orgRoutes.route("/:id").delete(orgController.deleteOrganization);

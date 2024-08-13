@@ -178,10 +178,10 @@ const prisma = new PrismaClient()
  *       404:
  *         description: The organization was not found
  */
-  // async function deleteOrganization(req: Request, res: Response) {
-  //     const { id } = req.params
-  //     const result = await prisma.organizations.delete({ where: { id: Number(id) } })
-  //     res.json(result)
-  //   }
+  export async function deleteOrganization(req: Request, res: Response) {
+      const { id } = req.params
+      const result = await prisma.organizations.delete({ where: { id: Number(id) } })
+      res.json(result)
+    }
 
   

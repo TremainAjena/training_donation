@@ -27,5 +27,8 @@ export async function createOrganization(name: string, email: string, phone: str
        state: state,
      },
    })
-//    res.json(result)
  }
+
+ export async function deleteOrganization() {
+    return await prisma.organizations.delete({ where: { id: Number() } })
+  }
