@@ -29,9 +29,7 @@ export async function createOrganization(name: string, email: string, phone: str
    })
  }
 
- async function updateOrganization(name: string, email: string, phone: string, city: string, state: string) {
-  // const { id } = req.params
-  // const { name, region, roast } = req.body
+export async function updateOrganization(name: string, email: string, phone: string, city: string, state: string) {
  return await prisma.organizations.update({
       where: { id: Number() },
       data: {
