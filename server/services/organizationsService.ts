@@ -29,6 +29,21 @@ export async function createOrganization(name: string, email: string, phone: str
    })
  }
 
+ async function updateOrganization(name: string, email: string, phone: string, city: string, state: string) {
+  // const { id } = req.params
+  // const { name, region, roast } = req.body
+ return await prisma.organizations.update({
+      where: { id: Number() },
+      data: {
+        name: name,
+        email: email,
+        phone: phone,
+        city: city,
+        state: state,
+      },
+    })
+}
+
  export async function deleteOrganization() {
     return await prisma.organizations.delete({ where: { id: Number() } })
   }

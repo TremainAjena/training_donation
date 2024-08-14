@@ -32,5 +32,5 @@ orgRoutes.route("/").post(orgController.createOrganization);
 // orgController.createOrganization
 // );
 
-// router.route("/:id").put(orgController.updateOrganization);
+orgRoutes.route("/:id").put(orgController.updateOrganization);
 orgRoutes.route("/:id").delete(orgController.deleteOrganization);
