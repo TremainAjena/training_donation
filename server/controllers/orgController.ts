@@ -142,19 +142,21 @@ const prisma = new PrismaClient()
  *       200:
  *         description: returns the user object.
  */
-  // async function updateOrganization(req: Request, res: Response) {
-  //     const { id } = req.params
-  //     const { name, region, roast } = req.body
-  //     const result = await prisma.organizations.update({
-  //         where: { id: Number(id) },
-  //         data: {
-  //             region: region,
-  //             roast: roast,
-  //             name: name,
-  //         },
-  //       })
-  //     res.json(result)
-  //   }
+  export async function updateOrganization(req: Request, res: Response) {
+      const { id } = req.params
+      const { name, email, phone, city, state } = req.body
+      const result = await prisma.organizations.update({
+          where: { id: Number(id) },
+          data: {
+            name: name,
+            email: email,
+            phone: phone,
+            city: city,
+            state: state,
+          },
+        })
+      return res.json(result)
+    }
     
 
 // DELETE /organizations/:id - deleting specific organization entries
@@ -178,10 +180,10 @@ const prisma = new PrismaClient()
  *       404:
  *         description: The organization was not found
  */
-  // async function deleteOrganization(req: Request, res: Response) {
-  //     const { id } = req.params
-  //     const result = await prisma.organizations.delete({ where: { id: Number(id) } })
-  //     res.json(result)
-  //   }
+  export async function deleteOrganization(req: Request, res: Response) {
+      const { id } = req.params
+      const result = await prisma.organizations.delete({ where: { id: Number(id) } })
+      res.json(result)
+    }
 
   
