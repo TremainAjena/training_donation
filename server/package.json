@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tests": "jest",
+    "test": "jest",
+    "test:unit": "jest --testPathIgnorePatterns ./routes/ --ci --reporters=default --reporters=jest-junit",
+    "test:integration": "jest --config ./jest.integration.config.ts --testPathPattern ./routes/ --forceExit --ci --reporters=default --reporters=jest-junit",
     "dev": "nodemon index.ts"
   },
   "repository": {
@@ -17,9 +18,13 @@
   "dependencies": {
     "@prisma/client": "^5.17.0",
     "@types/cors": "^2.8.17",
+    "@types/supertest": "^6.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "jest-junit": "^16.0.0",
+    "supertest": "^7.0.0",
+    "testcontainers": "^10.11.0",
     "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2"
   },
