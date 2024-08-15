@@ -1,7 +1,6 @@
 import { Result } from "@prisma/client/runtime/library"
 
-const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
+import { prisma } from '../utils/prisma'
 
 
 export async function getOrganizations() {

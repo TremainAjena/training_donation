@@ -10,7 +10,7 @@ describe('OrganizationsService', () => {
             const organizations = [{id: 1}]
             prismaMock.organizations = {findMany: jest.fn().mockReturnValueOnce(organizations)}
 
-            const result = await organizationsService.getOrganizations
+            const result = await organizationsService.getOrganizations()
             expect(prisma.organizations.findMany).toHaveBeenCalledTimes(1)
             expect(result).toEqual(organizations)
         })
