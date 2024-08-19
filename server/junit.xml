@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="1" failures="0" errors="0" time="2.149">
-  <testsuite name="/organizations" errors="0" failures="0" skipped="0" timestamp="2024-08-15T17:34:22" time="2.115" tests="1">
-    <testcase classname="/organizations GET /organizations should return organizations" name="/organizations GET /organizations should return organizations" time="0.067">
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="2.486">
+  <testsuite name="/organizations" errors="0" failures="0" skipped="0" timestamp="2024-08-19T20:39:59" time="2.287" tests="1">
+    <testcase classname="/organizations GET /organizations should return organizations" name="/organizations GET /organizations should return organizations" time="0.038">
     </testcase>
   </testsuite>
 </testsuites>
