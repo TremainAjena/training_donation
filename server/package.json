@@ -24,6 +24,7 @@
     "express": "^4.19.2",
     "jest-junit": "^16.0.0",
     "supertest": "^7.0.0",
+    "swagger-jsdoc": "^6.2.8",
     "testcontainers": "^10.11.0",
     "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2"
