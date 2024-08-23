@@ -10,6 +10,9 @@ const prisma = new PrismaClient();
 
 dotenv.config();
 
+// const swaggerUi = require('swagger-ui-express');
+// const swaggerDocs = require('swagger-jsdoc');
+
 const app = express();
 app.use(cors());
 app.use(express.json()) // let's go ahead and add json too
@@ -29,5 +32,9 @@ app.get("/", async (req: Request, res: Response) => {
   console.log(allUsers)
   res.send("Express + TypeScript Server");
 });
+
+// const swaggerSpec = swaggerDocs(options);
+
+// app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export {app}
