@@ -1,10 +1,7 @@
-import { Result } from "@prisma/client/runtime/library";
-
-const express = require('express')
-const jwt = require('jsonwebtoken');
-const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
-const bcrypt = require('bcrypt')
+import { Request, Response, NextFunction } from 'express';
+import { prisma } from '../utils/prisma'
+import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcryptjs';
 
 // Login
    /**
@@ -32,11 +29,11 @@ const bcrypt = require('bcrypt')
  *       500:
  *         description: Some server error
 */
-export async function loginUser(req, res) {
-    const { email, encrypted_password } = req.body
+export async function loginUser(req: Request, res: Response) {
+    const { email, password } = req.body
     const user = await prisma.users.findFirst({ where: { email: email } })
     if (user){
-      const passwordsMatch = await bcrypt.compare(encrypted_password, user.encrypted_password);
+      const passwordsMatch = await bcrypt.compare(password, user.encrypted_password);
       if (passwordsMatch){
         // const accessToken = "123";
         const accessToken = jwt.sign({ sub: user.id, email: user.email }, `${process.env.SECRET_KEY}`, {

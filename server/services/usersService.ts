@@ -1,6 +1,7 @@
 import { Result } from "@prisma/client/runtime/library"
 
 import { prisma } from '../utils/prisma'
+import * as bcrypt from 'bcryptjs';
 
 
 export async function getUsers() {
@@ -16,12 +17,13 @@ export async function getUser(userId: number) {
     })
 }
 
-export async function createUser(name: string, email: string, encrypted_password: string, zip_code: string) {
-   return await prisma.users.create({
+export async function createUser(name: string, email: string, password: string, zip_code: string) {
+   const hashedPassword = await bcrypt.hash(password, 10)
+  return await prisma.users.create({
      data: {
        name: name,
        email: email,
-       encrypted_password: encrypted_password,
+       encrypted_password: hashedPassword,
        zip_code: zip_code
      },
    })

@@ -79,10 +79,13 @@ const prisma = new PrismaClient()
  *                 name:
  *                    type: string
  *                    required: true
- *                 region:
+ *                 email:
  *                    type: string
  *                    required: true
- *                 roast:
+ *                 encrypted_password:
+ *                    type: string
+ *                    required: true
+ *                 zip_code:
  *                    type: string
  *                    required: true
  *     responses:
@@ -130,14 +133,17 @@ const prisma = new PrismaClient()
  *            type: object
  *            properties:
  *              name:
- *                type: string
- *                required: true
- *              region:
- *                type: string
- *                required: true
- *              roast:
- *                type: string
- *                required: true
+ *                 type: string
+ *                 required: true
+ *              email:
+ *                 type: string
+ *                 required: true
+ *              encrypted_password:
+ *                 type: string
+ *                 required: true
+ *              zip_code:
+ *                 type: string
+ *                 required: true
  *     responses:
  *       200:
  *         description: returns the user object.
