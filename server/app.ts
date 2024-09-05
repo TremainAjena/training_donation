@@ -6,6 +6,7 @@ import { userRoutes } from "./routes/users";
 import { authRoutes } from "./routes/auth";
 import cors from 'cors'
 import swaggerDocs from "swagger-jsdoc"
+import morgan from 'morgan'
 
 import { verifyTokenMiddleware } from './middleware/auth';
 
@@ -17,6 +18,7 @@ const swaggerUI = require('swagger-ui-express');
 const app = express();
 app.use(cors());
 app.use(express.json()) // let's go ahead and add json too
+app.use(morgan('combined'))
 
 
 const swaggerOptions = {

@@ -30,6 +30,7 @@ import * as bcrypt from 'bcryptjs';
  *         description: Some server error
 */
 export async function loginUser(req: Request, res: Response) {
+  console.log(req.body)
     const { email, password } = req.body
     const user = await prisma.users.findFirst({ where: { email: email } })
     if (user){
