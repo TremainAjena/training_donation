@@ -3,6 +3,7 @@ import Router from './containers/routes'
 import { useState, useEffect } from 'react'
 import AuthContext from './context/auth';
 import TokenUtils from './utils/token';
+import Nav from './containers/nav';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
+      <Nav />
       <Router />
     </AuthContext.Provider>
 
