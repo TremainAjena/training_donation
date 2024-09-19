@@ -3,6 +3,9 @@ import Counts from './counts'
 import Login from './login'
 import { useContext } from "react"
 import AuthContext from "../context/auth"
+import Users from './users'
+import Organizations from './organizations'
+import Details from './orgDetails'
 
 export default function Router(){
     const {user} = useContext(AuthContext)
@@ -11,7 +14,14 @@ export default function Router(){
         return (
             <Routes>
                 <Route path="/counts" element={<Counts />}></Route>
-                <Route path="*" element={<Counts />}></Route>
+                {/* <Route path="*" element={<Counts />}></Route> */}
+                <Route path="/users" element={<Users />}></Route>
+                <Route path="/organizations" element={<Organizations />}></Route>
+                <Route path="/organizations/:id" element={<Details />}></Route>
+
+
+
+
             </Routes>
         )
     }

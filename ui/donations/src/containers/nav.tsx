@@ -14,7 +14,7 @@ function Nav() {
          <div className="links">
            <Link to={'/counts'} className='nav-link'><Button color="cyan" variant="soft">Counts</Button></Link>
            <Link to={'/users'} className='nav-link'><Button color="cyan" variant="soft">Users</Button></Link>
-           <Link to={'/posts'} className='nav-link'><Button color="cyan" variant="soft">Posts</Button></Link>
+           <Link to={'/organizations'} className='nav-link'><Button color="cyan" variant="soft">Organizations</Button></Link>
            <Button color="red" variant="soft" className='nav-link' onClick={logout}>Logout</Button>
          </div>
        </div>
