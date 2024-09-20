@@ -27,11 +27,8 @@ function Organizations() {
           <Table.Header>
             <Table.Row>
               <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Phone Number</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>City</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>State</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Events</Table.ColumnHeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -41,11 +38,9 @@ function Organizations() {
               return (
                   <Table.Row key={i.id}>
                     <Table.Cell><Link to={`/organizations/${i.id}`} >{i.name}</Link></Table.Cell>
-                    <Table.Cell>{i.email}</Table.Cell>
-                    <Table.Cell>{i.phone}</Table.Cell>
                     <Table.Cell>{i.city}</Table.Cell>
                     <Table.Cell>{i.state}</Table.Cell>
-                    <Table.Cell>{i.events}</Table.Cell>
+                    
                   </Table.Row>
               )
             })}

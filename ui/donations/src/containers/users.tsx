@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Table } from '@radix-ui/themes'
+import { Link } from 'react-router-dom'
 import instance from '../utils/axios'
 
 function Users() {
@@ -23,9 +24,9 @@ function Users() {
         <Table.Root variant="surface">
           <Table.Header>
             <Table.Row>
+              <Table.ColumnHeaderCell>ID</Table.ColumnHeaderCell>
               <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell>Zipcode</Table.ColumnHeaderCell>
+              
             </Table.Row>
           </Table.Header>
 
@@ -34,9 +35,9 @@ function Users() {
 
               return (
                   <Table.Row key={i.id}>
-                    <Table.Cell>{i.name}</Table.Cell>
-                    <Table.Cell>{i.email}</Table.Cell>
-                    <Table.Cell>{i.zip_code}</Table.Cell>
+                    <Table.Cell>{i.id}</Table.Cell>
+                    <Table.Cell><Link to={`/users/${i.id}`} >{i.name}</Link></Table.Cell>
+                    
                     
                   </Table.Row>
               )
