@@ -1,6 +1,6 @@
-import '../App.css'
+// import '../App.css'
 import { useState, useEffect } from 'react'
-import { Box, Card, Inset, Text, Strong, Flex, CheckboxCards } from '@radix-ui/themes'
+import { Box, Card, Inset, Text, Strong, Flex, CheckboxCards, Table, Button } from '@radix-ui/themes'
 import instance from '../utils/axios'
 import { useParams } from 'react-router-dom'
 
@@ -19,18 +19,18 @@ function Details() {
         getDetails();
     }, [])
 
-    //   const [events, setEvents] = useState()
-    //   useEffect(() => {
-    //     const getEvents = async () => {
-    //       return await instance
-    //         .get("/events")
-    //         .then((response) => {
-    //           setEvents(response.data);
-    //           console.log(response.data)
-    //         });
-    //     };
-    //     getEvents();
-    //   }, [])
+    const [events, setEvents] = useState()
+    useEffect(() => {
+        const getEvents = async () => {
+            return await instance
+                .get(`/events/${id}`)
+                .then((response) => {
+                    setEvents(response.data);
+                    console.log(response.data)
+                });
+        };
+        getEvents();
+    }, [])
 
     if (organization) {
         return (
@@ -58,25 +58,31 @@ function Details() {
                             <p>Location: {organization.city}, {organization.state}</p>
                         </Text>
 
-                        {/* {events && events.map(function(x){
-                
-                                return (
-                                    <Flex direction="row" gap="3" maxWidth="200px">
-
-                                        <CheckboxCards.Root defaultValue={['1']} color="cyan">
-                                            <CheckboxCards.Item value="1">{x.name}</CheckboxCards.Item>
-                                        </CheckboxCards.Root>
-
-                                        <CheckboxCards.Root defaultValue={['1']} color="orange">
-                                            <CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
-                                        </CheckboxCards.Root>
-
-                                    </Flex>
-                                )
-                            })} */}
                     </Card>
 
                 </Box>
+
+                <Table.Root variant="surface">
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.ColumnHeaderCell>Event Name</Table.ColumnHeaderCell>
+                            <Table.ColumnHeaderCell>Location</Table.ColumnHeaderCell>
+                            <Table.ColumnHeaderCell>Actions</Table.ColumnHeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    {/* {events && events.map(function (x) { */}
+                        {/* return ( */}
+                            <Table.Body>
+                                <Table.Row key={events}>
+                                    <Table.RowHeaderCell>{events.name}</Table.RowHeaderCell>
+                                    <Table.Cell>{events.location}</Table.Cell>
+                                    <Table.Cell><Button>Edit</Button><Button>Delete</Button></Table.Cell>
+                                </Table.Row>
+                            </Table.Body>
+
+                        {/* ) */}
+                    {/* })} */}
+                </Table.Root>
             </>
         )
     }

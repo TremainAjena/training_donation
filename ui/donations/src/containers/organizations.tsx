@@ -1,7 +1,7 @@
 import '../App.css'
 
 import { useState, useEffect } from 'react'
-import { Table } from '@radix-ui/themes'
+import { Table, Button } from '@radix-ui/themes'
 import instance from '../utils/axios'
 import { Link } from 'react-router-dom'
 
@@ -21,7 +21,7 @@ function Organizations() {
 
     return (
       <>
-        <p>HOWDY!</p>
+        <div> <Link to={'/orgForm'} className='nav-link'><Button color="cyan">Add Organization</Button></Link></div>
         <div>
         <Table.Root variant="surface">
           <Table.Header>

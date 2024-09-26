@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { orgRoutes } from "./routes/organizations";
 import { userRoutes } from "./routes/users";
 import { authRoutes } from "./routes/auth";
+import { eventRoutes } from "./routes/events";
 import cors from 'cors'
 import swaggerDocs from "swagger-jsdoc"
 import morgan from 'morgan'
@@ -67,6 +68,8 @@ app.use('/login', authRoutes)
 app.use("*", verifyTokenMiddleware)
 app.use("/organizations", orgRoutes)
 app.use("/users", userRoutes)
+app.use("/events", eventRoutes)
+
 
 
 app.get("/", async (req: Request, res: Response) => {

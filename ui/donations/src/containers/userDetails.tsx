@@ -57,23 +57,6 @@ function UserDetails() {
                             <p>Zipcode: {user.zip_code}</p>
 
                         </Text>
-
-                        {/* {events && events.map(function(x){
-                
-                                return (
-                                    <Flex direction="row" gap="3" maxWidth="200px">
-
-                                        <CheckboxCards.Root defaultValue={['1']} color="cyan">
-                                            <CheckboxCards.Item value="1">{x.name}</CheckboxCards.Item>
-                                        </CheckboxCards.Root>
-
-                                        <CheckboxCards.Root defaultValue={['1']} color="orange">
-                                            <CheckboxCards.Item value="1">Agree to Terms</CheckboxCards.Item>
-                                        </CheckboxCards.Root>
-
-                                    </Flex>
-                                )
-                            })} */}
                     </Card>
 
                 </Box>

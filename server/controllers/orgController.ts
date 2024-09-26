@@ -125,7 +125,7 @@ const prisma = new PrismaClient()
  * @swagger
  * /organizations/{id}:
  *   put:
- *     summary: Update a user
+ *     summary: Update an organization
  *     tags: [Organizations]
  *     parameters:
  *      - name: id

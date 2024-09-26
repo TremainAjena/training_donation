@@ -7,6 +7,7 @@ import Users from './users'
 import Organizations from './organizations'
 import Details from './orgDetails'
 import UserDetails from './userDetails'
+import AddOrganization from './orgForm'
 
 export default function Router(){
     const {user} = useContext(AuthContext)
@@ -20,6 +21,8 @@ export default function Router(){
                 <Route path="/organizations" element={<Organizations />}></Route>
                 <Route path="/organizations/:id" element={<Details />}></Route>
                 <Route path="/users/:id" element={<UserDetails />}></Route>
+                <Route path="/orgForm" element={<AddOrganization />}></Route>
+
 
             </Routes>
         )
