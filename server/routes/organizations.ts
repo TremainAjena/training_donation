@@ -34,3 +34,7 @@ orgRoutes.route("/").post(orgController.createOrganization);
 
 orgRoutes.route("/:id").put(orgController.updateOrganization);
 orgRoutes.route("/:id").delete(orgController.deleteOrganization);
+
+// Custom Route, not apart of crud routes
+orgRoutes.route("/:id/events").get(orgController.getEventsForOrganization);
+

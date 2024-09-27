@@ -44,3 +44,12 @@ export async function updateOrganization(name: string, email: string, phone: str
  export async function deleteOrganization() {
     return await prisma.organizations.delete({ where: { id: Number() } })
   }
+
+  // Function for the custom crud operation to pull associated events into the organization show detail page
+  export async function getEventsForOrganization(organizationId: number) {
+    return await prisma.events.findMany({
+        where: {
+            organization_id: organizationId
+        }
+    })
+}

@@ -204,4 +204,8 @@ const prisma = new PrismaClient()
       res.json(result)
     }
 
-  
+    export async function getEventsForOrganization(req: Request, res: Response) {
+      const { id } = req.params
+      const events = await organizationsService.getEventsForOrganization(Number(id))
+      res.json(events)
+    }

@@ -23,7 +23,7 @@ function Details() {
     useEffect(() => {
         const getEvents = async () => {
             return await instance
-                .get(`/events/${id}`)
+                .get(`/organizations/${id}/events`)
                 .then((response) => {
                     setEvents(response.data);
                     console.log(response.data)
@@ -70,18 +70,18 @@ function Details() {
                             <Table.ColumnHeaderCell>Actions</Table.ColumnHeaderCell>
                         </Table.Row>
                     </Table.Header>
-                    {/* {events && events.map(function (x) { */}
-                        {/* return ( */}
-                            <Table.Body>
-                                <Table.Row key={events}>
-                                    <Table.RowHeaderCell>{events.name}</Table.RowHeaderCell>
-                                    <Table.Cell>{events.location}</Table.Cell>
-                                    <Table.Cell><Button>Edit</Button><Button>Delete</Button></Table.Cell>
-                                </Table.Row>
-                            </Table.Body>
+                    {events && events.map(function (event) {
 
-                        {/* ) */}
-                    {/* })} */}
+                        <Table.Body key={event.id}>
+                            <Table.Row>
+                                <Table.RowHeaderCell>{event.name}</Table.RowHeaderCell>
+                                <Table.Cell>{event.location}</Table.Cell>
+                                <Table.Cell><Button>Edit</Button><Button>Delete</Button></Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+
+
+                    })}
                 </Table.Root>
             </>
         )
