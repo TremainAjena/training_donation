@@ -7,26 +7,25 @@ import { useParams } from 'react-router-dom'
 function Details() {
     const { id } = useParams()
     const [organization, setOrganization] = useState()
+    const [events, setEvents] = useState()
+
     useEffect(() => {
         const getDetails = async () => {
             return await instance
                 .get(`/organizations/${id}`)
                 .then((response) => {
                     setOrganization(response.data);
-                    console.log(response.data)
                 });
         };
         getDetails();
     }, [])
 
-    const [events, setEvents] = useState()
     useEffect(() => {
         const getEvents = async () => {
             return await instance
                 .get(`/organizations/${id}/events`)
                 .then((response) => {
                     setEvents(response.data);
-                    console.log(response.data)
                 });
         };
         getEvents();
@@ -70,8 +69,8 @@ function Details() {
                             <Table.ColumnHeaderCell>Actions</Table.ColumnHeaderCell>
                         </Table.Row>
                     </Table.Header>
-                    {events && events.map((event) => {
 
+                    {events && events.map(event => (
                         <Table.Body key={event.id}>
                             <Table.Row>
                                 <Table.RowHeaderCell>{event.name}</Table.RowHeaderCell>
@@ -79,9 +78,8 @@ function Details() {
                                 <Table.Cell><Button>Edit</Button><Button>Delete</Button></Table.Cell>
                             </Table.Row>
                         </Table.Body>
+                    ))}
 
-
-                    })}
                 </Table.Root>
             </>
         )
