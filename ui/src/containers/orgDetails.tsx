@@ -1,6 +1,6 @@
 // import '../App.css'
 import { useState, useEffect } from 'react'
-import { Box, Card, Inset, Text, Strong, Flex, CheckboxCards, Table, Button } from '@radix-ui/themes'
+import { Box, Card, Inset, Text, Strong, Table, Button } from '@radix-ui/themes'
 import instance from '../utils/axios'
 import { useParams } from 'react-router-dom'
 
