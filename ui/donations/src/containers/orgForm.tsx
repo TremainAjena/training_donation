@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import axios from 'axios'
+import instance from '../utils/axios'
 import { Flex, Text, Button, TextField } from '@radix-ui/themes'
 import { useNavigate } from 'react-router-dom'
 import AuthContext from '../context/auth'
@@ -15,7 +15,7 @@ function addOrganization() {
     const [state, setState] = useState()
 
     const navigate = useNavigate()
-    const { submit } = useContext(AuthContext)
+    // const { submit } = useContext(AuthContext)
     // const notify = () => toast("Wow so easy!");
 
     const updateName = (event: any) => {
@@ -44,21 +44,12 @@ function addOrganization() {
     }
 
 
-    const instance = axios.create({
-        baseURL: "http://localhost:3000",
-        timeout: 1000,
-        headers: { "Content-Type": "application/json" }
-    })
-
     const submitForm = async () => {
         console.log('submit')
         const response = await instance
             .post("/organizations", { name, email, phone, city, state })
             .then((response) => {
                 if (response.status == 200) {
-                    // const jwt = response.data.token;
-                    // localStorage.setItem("user", jwt);
-                    submit()
                     console.log();
 
                     // Put your notification toast here

@@ -70,7 +70,7 @@ function Details() {
                             <Table.ColumnHeaderCell>Actions</Table.ColumnHeaderCell>
                         </Table.Row>
                     </Table.Header>
-                    {events && events.map(function (event) {
+                    {events && events.map((event) => {
 
                         <Table.Body key={event.id}>
                             <Table.Row>
