@@ -11,7 +11,6 @@ import AddOrganization from './orgForm'
 
 export default function Router(){
     const {user} = useContext(AuthContext)
-    console.log(user)
     const authenticatedRoutes = () => {
         return (
             <Routes>

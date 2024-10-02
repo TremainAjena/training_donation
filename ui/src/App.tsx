@@ -13,9 +13,7 @@ function App() {
   useEffect(() => {
     if (jwt) {
       setUser(jwt)
-      console.log(jwt)
     } else {
-      console.log('nope')
     }
   }, [])
 
