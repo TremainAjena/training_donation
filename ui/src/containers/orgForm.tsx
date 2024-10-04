@@ -15,7 +15,7 @@ function addOrganization() {
     const [state, setState] = useState()
 
     const navigate = useNavigate()
-    // const { submit } = useContext(AuthContext)
+    const { submit } = useContext(AuthContext)
     // const notify = () => toast("Wow so easy!");
 
     const updateName = (event: any) => {
@@ -43,13 +43,17 @@ function addOrganization() {
         console.log(event.target.value)
     }
 
-
+    
     const submitForm = async () => {
         console.log('submit')
         const response = await instance
             .post("/organizations", { name, email, phone, city, state })
             .then((response) => {
                 if (response.status == 200) {
+
+                    // const jwt = response.data.token;
+                    // localStorage.setItem("user", jwt);
+                    submit()
                     console.log();
 
                     // Put your notification toast here
