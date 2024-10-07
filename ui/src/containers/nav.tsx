@@ -1,3 +1,4 @@
+import '../nav.css'
 import { Link } from "react-router-dom"
 import { Button } from "@radix-ui/themes"
 import { useContext } from "react"
